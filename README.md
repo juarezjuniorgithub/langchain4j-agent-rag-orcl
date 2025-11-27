@@ -3,26 +3,26 @@
 
 ---
 
-# The LangChain4J Agentic AI API — Creating RAG Agents with Oracle AI Vector Search, OracleEmbeddingStore, and the Oracle Database 23ai
+# The LangChain4J Agentic AI API — Creating RAG Agents with Oracle AI Vector Search, OracleEmbeddingStore, and the Oracle AI Database 26ai
 
 ### Introduction
 
-In this post, we’ll explore how to build an Agentic RAG (Retrieval-Augmented Generation) application with LangChain4j that uses the [Oracle Database 23ai](https://www.oracle.com) as a vector store.
+In this post, we’ll explore how to build an Agentic RAG (Retrieval-Augmented Generation) application with LangChain4j that uses the [Oracle AI Database 26ai]([https://www.oracle.com](https://www.oracle.com/database/free/)) as a vector store.
 
-Our LangChain4J RAG agent will act as a technical support agent that provides descriptions for [Oracle Database Error Messages (ORA Index)](https://docs.oracle.com) by searching a simple knowledge base stored in the Oracle Database 23ai as vector embeddings.
+Our LangChain4J RAG agent will act as a technical support agent that provides descriptions for [Oracle Database Error Messages (ORA Index)](https://docs.oracle.com) by searching a simple knowledge base stored in the Oracle AI Database 26ai as vector embeddings.
 
 In a nutshell, our technical support agentic scenario will present:
 
 - How to use the `dev.langchain4j.agentic.AgenticServices` class to create agents with LangChain4J and its Agents and Agentic AI API.
 - How to use the `@Tool` annotation (`dev.langchain4j.agent.tool.Tool`) to expose database search functionality as a callable agent function.
-- Use the **OracleEmbeddingStore** and the Oracle Database 23ai to store vector embeddings, and then retrieve them using a content retriever, as I already demonstrated in a previous blog post, but using a slightly different strategy as I split the ingestion and retrieval operations between the `OracleRagAgent.java` class (the RAG agent class) and the `OracleDatabaseTool.java` class (the tool class).
+- Use the **OracleEmbeddingStore** and the Oracle AI Database 26ai to store vector embeddings, and then retrieve them using a content retriever, as I already demonstrated in a previous blog post, but using a slightly different strategy as I split the ingestion and retrieval operations between the `OracleRagAgent.java` class (the RAG agent class) and the `OracleDatabaseTool.java` class (the tool class).
 - Also note that in comparison with the sample code I created such a previous blog post, another difference is that now I’m using the `AgenticServices` class instead of the AgenticServices one, so once again, note that I’m using the Agents and Agentic AI API.
 
 Given that, primarily the components used in this blog post belong to the [langchain4j-agentic](https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-agentic) module available in LangChain4J, so they relate to its Agents and Agentic AI API — some examples are the `AgenticServices` class (`dev.langchain4j.agentic.AgenticServices`) and the `@Tool` annotation (`dev.langchain4j.agent.tool.Tool`).
 
 Interesting to mention, I did not find a public/published Javadoc for the `langchain4j-agentic` module used in this blog post, so many references were left in italic to highlight that. Otherwise, I’d have included the links to allow you to easily check the documentation as you read my blog post, as I always do in all my blog posts.
 
-Besides, it can be the case that breaking changes may happen, if so (remember this is about open-source software). I did my best to create a simple scenario that will allow you to kick the tyres and explore the Agents and Agentic AI API and the `langchain4j-agentic` module, combined with our Oracle embedding store module (`OracleEmbeddingStore`) to create a simple Agentic RAG scenario.
+Besides, it can be the case that breaking changes may happen, if so, (remember this is about open-source software). I did my best to create a simple scenario that will allow you to kick the tyres and explore the Agents and Agentic AI API and the `langchain4j-agentic` module, combined with our Oracle embedding store module (`OracleEmbeddingStore`) to create a simple Agentic RAG scenario.
 
 Anyway, I may update this blog post with the Javadoc link and address any other breaking changes in the near future.
 
@@ -33,8 +33,8 @@ So without further ado, let’s get started!
 ### Prerequisites
 
 - JDK — [Java Development Kit](https://www.oracle.com) 17+
-- [Oracle Database Free Release 23ai — Container Image](https://container-registry.oracle.com)
-- [Oracle JDBC Driver 23ai](https://repo1.maven.org)
+- [Oracle AI Database Free Release — Container Image](https://container-registry.oracle.com)
+- [Oracle JDBC Driver](https://repo1.maven.org)
 - Your preferred Java IDE — [Eclipse](https://www.eclipse.org), [IntelliJ](https://www.jetbrains.com), [VS Code](https://code.visualstudio.com)
 - [Apache Maven](https://maven.apache.org) or Gradle
 
@@ -56,7 +56,7 @@ Using Maven:
 </properties>
 
 <dependencies>
-    <!-- Oracle Database 23ai JDBC / UCP -->
+    <!-- Oracle AI Database JDBC / UCP -->
     <dependency>
         <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc17</artifactId>
@@ -324,11 +324,11 @@ Needless to say, the sample data set I ingested and used to store the vector emb
 
 ### Wrapping it up
 
-That’s it! In this post, we built a simple Agentic AI application using LangChain4j, the [OracleEmbeddingStore](https://docs.langchain4j.dev), [Oracle AI Vector Search](https://docs.oracle.com), and the [Oracle Database 23ai](https://www.oracle.com). The key takeaway is that Agentic AI is not just about simple interactions where LLM models answer questions, but creating intelligent agents that can reason, retrieve data with RAG and tools, and perform actions within your existing Java applications.
+That’s it! In this post, we built a simple Agentic AI application using LangChain4j, the [OracleEmbeddingStore](https://docs.langchain4j.dev), [Oracle AI Vector Search](https://docs.oracle.com), and the [Oracle AI Database 26ai](https://www.oracle.com). The key takeaway is that Agentic AI is not just about simple interactions where LLM models answer questions, but creating intelligent agents that can reason, retrieve data with RAG and tools, and perform actions within your existing Java applications.
 
 This blog post only introduced the basic building blocks of creating Agentic AI applications in Java with LangChain4J and the OracleEmbeddingStore, so my focus was on presenting the basic components, their integration, and the `dev.langchain4j.agentic.AgenticServices` API. In my next blog post about this topic, I’ll show you how to integrate two different agents that can collaborate to execute a more elaborate scenario.
 
-However, before that, we’ll explore how to use [MCP (Model Context Protocol)](https://modelcontextprotocol.io) with LangChain4J and the Oracle Database 23ai!
+However, before that, we’ll explore how to use [MCP (Model Context Protocol)](https://modelcontextprotocol.io) with LangChain4J and the Oracle AI Database 26ai!
 
 As one last tip, I invite you to check out the new [Database Navigator](https://plugins.jetbrains.com) tool published at JetBrains Marketplace. In a nutshell, it features a robust SQL and PL/SQL editor with advanced capabilities for managing database connections, executing scripts, editing database objects, and modifying data and code with IntelliJ!
 
