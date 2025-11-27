@@ -20,6 +20,7 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.oracle.CreateOption;
 import dev.langchain4j.store.embedding.oracle.OracleEmbeddingStore;
+import static dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI;
 
 public class OracleRagAgent {
 
@@ -28,7 +29,7 @@ public class OracleRagAgent {
     DataSource dataSource = OracleDbUtils.getPooledDataSource();
 
     // Chat model
-    ChatModel chatModel = OpenAiChatModel.builder().apiKey(System.getenv("OPENAI_API_KEY")).modelName("gpt-4o-mini")
+    ChatModel chatModel = OpenAiChatModel.builder().apiKey(System.getenv("OPENAI_API_KEY")).modelName(GPT_4_O_MINI)
         .build();
 
     // Embedding store (Oracle DB as vector store)
@@ -48,16 +49,16 @@ public class OracleRagAgent {
 
     // Ask a question. The tech support agent will use the Oracle Database tool to
     // retrieve context
-    String errorCode = "What is the error code description for ORA-00060?";
+    String errorCode = "ORA-00060";
     String answer = techSupportAgent.getErrorCodeDescription(errorCode);
 
-    System.out.println("Query: " + errorCode);
+    System.out.println("Query: What is the error code description for ORA-00060?");
     System.out.println("Response: " + answer + "\n");
 
-    errorCode = "What is the error code description for ORA-ORA-28018?";
+    errorCode = "ORA-28018";
     answer = techSupportAgent.getErrorCodeDescription(errorCode);
 
-    System.out.println("Query: " + errorCode);
+    System.out.println("Query: What is the error code description for ORA-28018?");
     System.out.println("Response: " + answer + "\n");
 
   }
@@ -87,7 +88,6 @@ public class OracleRagAgent {
         embeddingStore.add(embedding, TextSegment.from(doc.text()));
       }
     }
-
     System.out.println("Loaded " + documents.size() + " Oracle error codes into the embedding store.\n");
   }
 
