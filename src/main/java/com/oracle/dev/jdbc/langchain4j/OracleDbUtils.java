@@ -12,8 +12,8 @@ public class OracleDbUtils {
 
   // JDBC connection details
   private final static String URL = "jdbc:oracle:thin:@localhost:1521/FREEPDB1";
-  private final static String USERNAME = System.getenv("DB_23AI_USERNAME");
-  private final static String PASSWORD = System.getenv("DB_23AI_PASSWORD");
+  private final static String USERNAME = System.getenv("DB_USERNAME");
+  private final static String PASSWORD = System.getenv("DB_PASSWORD");
 
   public static Connection getConnectionFromPooledDataSource() throws SQLException {
     // Create pool-enabled data source instance
